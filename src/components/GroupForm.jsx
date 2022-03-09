@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Form, InputGroup, FormControl, Button } from 'react-bootstrap';
+import {Form, InputGroup, FormControl, Button, Container } from 'react-bootstrap';
 import { MdOutlineTitle } from 'react-icons/md';
 import { GrDocumentNotes } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import { addNotesAction } from '../actions/actions';
 
 function GroupForm() {
   const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
+  const [words, setWords] = useState("");
 
   const dispatch = useDispatch()
 
@@ -17,7 +17,7 @@ function GroupForm() {
   }
 
   const handleNoteChange = (e) => {
-    setNote(e.target.value);
+    setWords(e.target.value);
   }
 
   const handleSubmit = (e) => {
@@ -26,32 +26,34 @@ function GroupForm() {
     let newNote = {
       id: uuid(),
       title: title,
-      note: note,
+      words: words,
     };
 
     dispatch(addNotesAction(newNote));
 
     setTitle('');
-    setNote('');
+    setWords('');
 
   }
 
   return (
     <>
-      <h1>Note Form</h1>
-      <Form onSubmit={handleSubmit}>
-      <Form.Label htmlFor="basic-url">Title</Form.Label>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3"><MdOutlineTitle /></InputGroup.Text>
-        <FormControl id="basic-url" aria-describedby="basic-addon3" value={title} onChange={handleTitleChange} />
-      </InputGroup>
-      <Form.Label htmlFor="basic-url">Notes</Form.Label>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
-        <FormControl as="textarea" row={3} aria-describedby="basic-addon3" value={note} onChange={handleNoteChange} />
-      </InputGroup>
-      <Button className="w-100">Add Notes</Button>
-      </Form>
+      <Container>
+        <h1 className="text-center">Note Form</h1>
+        <Form onSubmit={handleSubmit}>
+        <Form.Label>Title</Form.Label>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="basic-addon3"><MdOutlineTitle /></InputGroup.Text>
+          <FormControl type="text" value={title} onChange={handleTitleChange} />
+        </InputGroup>
+        <Form.Label >Notes</Form.Label>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
+          <FormControl type="text" as="textarea" row={3} value={words} onChange={handleNoteChange} />
+        </InputGroup>
+        <Button className="w-100">Add Notes</Button>
+        </Form>
+      </Container>
     </>
   );
 };

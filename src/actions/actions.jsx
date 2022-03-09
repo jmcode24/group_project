@@ -1,6 +1,6 @@
 export const addNotesAction = (note) => {
   return {
-    type: "ADD_NOTES",
+    type: "ADD_NOTE",
     payload: note,
   };
 };

@@ -4,13 +4,13 @@ const initialState = {
 
 const groupReducers = (state = initialState, action) => {
   switch(action.type) {
-    case "ADD_NOTES":
+    case "ADD_NOTE":
     return { ...state, notes: [...state.notes, action.payload]};
 
-    case "DELETE_NOTES":
+    case "DELETE_NOTE":
     return { ...state, notes: []};
 
-    case "EDIT_NOTES":
+    case "EDIT_NOTE":
     return { ...state, notes: []};
 
 

@@ -8,7 +8,7 @@ function App() {
     <div>
       <Container fluid>
         <Row>
-          <Col md='4'> <GroupForm /> </Col>
+          <Col md='4' fixed="top"> <GroupForm /> </Col>
           <Col md='8'> <GroupList /> </Col>
         </Row>
       </Container>
