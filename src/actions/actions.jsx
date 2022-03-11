@@ -8,9 +8,7 @@ export const addNotesAction = (note) => {
 export const deleteNotesAction = (id) => {
   return {
     type: "DELETE_NOTE",
-    payload: {
-      id: id,
-    } ,
+    payload: id,
   };
 };
 
