@@ -39,7 +39,7 @@ function GroupForm() {
   return (
     <>
       <Container>
-        <h1 className="text-center">Note<span className="text-danger">pad</span></h1>
+        <h1 className="text-center text-secondary">Note<span className="text-danger">pad</span></h1>
         <Form onSubmit={handleSubmit}>
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
@@ -49,7 +49,7 @@ function GroupForm() {
           <Form.Label >Notes</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
-            <FormControl type="text" as="textarea" row={3} value={words} onChange={handleNoteChange} />
+            <FormControl type="text" as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
           </InputGroup>
           <Button type="submit" className="w-100">Add Notes</Button>
         </Form>

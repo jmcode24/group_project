@@ -8,10 +8,17 @@ const groupReducers = (state = initialState, action) => {
     return { ...state, notes: [...state.notes, action.payload]};
 
     case "DELETE_NOTE":
-    return { ...state, notes: []};
+      const filterednotes = state.notes.filter((note) => {
+        if (note.id !== action.payload) return note;
+      });
+      return { ...state, notes: filterednotes}
 
     case "EDIT_NOTE":
-    return { ...state, notes: []};
+      const editednotes = state.notes.map((note) => {
+        if(note.id === action.payload.id) return action.payload.noteData;
+        return note
+      });
+      return { ...state, notes: editednotes };
 
 
     default:

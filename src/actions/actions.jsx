@@ -4,3 +4,20 @@ export const addNotesAction = (note) => {
     payload: note,
   };
 };
+
+export const deleteNotesAction = (id) => {
+  return {
+    type: "DELETE_NOTE",
+    payload: id
+  };
+};
+
+export const editNotesAction = (id, noteData) => {
+  return {
+    type: "EDIT_NOTE",
+    payload: {
+      id: id,
+      noteData: noteData
+    },
+  };
+};
