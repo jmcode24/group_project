@@ -28,6 +28,7 @@ const Group = (props) => {
   const handleSubmit = () => {
     let noteData = {
       id: note.id,
+      date: new Date(),
       title: title,
       words: words,
     };

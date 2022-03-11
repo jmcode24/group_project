@@ -9,13 +9,13 @@ const groupReducers = (state = initialState, action) => {
 
     case "DELETE_NOTE":
       const filterednotes = state.notes.filter((note) => {
-        if (note.id !== action.payload) return note;
+        if (note.id.date !== action.payload) return note;
       });
       return { ...state, notes: filterednotes}
 
     case "EDIT_NOTE":
       const editednotes = state.notes.map((note) => {
-        if(note.id === action.payload.id) return action.payload.noteData;
+        if(note.id.date === action.payload.id.date) return action.payload.noteData;
         return note
       });
       return { ...state, notes: editednotes };

@@ -5,18 +5,22 @@ export const addNotesAction = (note) => {
   };
 };
 
-export const deleteNotesAction = (id) => {
+export const deleteNotesAction = (id, date) => {
   return {
     type: "DELETE_NOTE",
-    payload: id
+    payload: {
+      id: id,
+      date: new Date(),
+    },
   };
 };
 
-export const editNotesAction = (id, noteData) => {
+export const editNotesAction = (id, date, noteData) => {
   return {
     type: "EDIT_NOTE",
     payload: {
       id: id,
+      date: new Date(),
       noteData: noteData
     },
   };
