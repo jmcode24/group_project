@@ -45,25 +45,25 @@ const Group = (props) => {
     <>
       <Card style={{ width: "15rem" }} className="mx-auto mb-2">
         <Card.Body key={index}>
-          <Card.Subtitle className="mb-2 text-dark text-center">
-            Note #: <span className="text-success">{index + 1}</span>
+          <Card.Subtitle className="mb-2 text-muted text-end">
+            <span className="fw-bold border-bottom">Note #: </span> <span className="text-info border-bottom">{index + 1}</span>
           </Card.Subtitle>
-          <Card.Title className="border-bottom border-dark mb-2 text-dark">
-            Title: <span className="text-success">{note.title}</span>
+          <Card.Title className="mb-1 p-1 text-dark">
+            <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic p-2 h6 fw-bold"><u>{note.title}</u></span>
           </Card.Title>
           <Card.Text className="mb-4">{note.words}</Card.Text>
-          <div className="d-flex justify-content-between border border-dark bg-secondary p-2">
+          <div className="d-flex justify-content-between bg-secondary p-2">
             <Button variant="danger" onClick={handleDelete}>
               Delete
             </Button>
-            <Button>Edit</Button>
+            <Button variant="info" onClick={() => setIsShowing(true)}>Edit</Button>
           </div>
         </Card.Body>
       </Card>
 
       <Modal show={isShowing} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Contact Information</Modal.Title>
+          <Modal.Title>Make Changes</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Label>Title</Form.Label>
@@ -95,7 +95,7 @@ const Group = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={handleSubmit}>
+          <Button variant="success" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

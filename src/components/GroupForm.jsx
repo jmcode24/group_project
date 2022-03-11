@@ -39,7 +39,7 @@ function GroupForm() {
   return (
     <>
       <Container>
-        <h1 className="text-center text-secondary">Note<span className="text-danger">pad</span></h1>
+        <h1 className="text-center">Notepad</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
