@@ -10,7 +10,7 @@ export const deleteNotesAction = (id) => {
     type: "DELETE_NOTE",
     payload: {
       id: id,
-    },
+    } ,
   };
 };
 

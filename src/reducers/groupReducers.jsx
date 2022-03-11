@@ -15,7 +15,7 @@ const groupReducers = (state = initialState, action) => {
 
     case "EDIT_NOTE":
       const editednotes = state.notes.map((note) => {
-        if(note.id === action.payload.id.date) return action.payload.noteData;
+        if(note.id === action.payload.id) return action.payload.noteData;
         return note
       });
       return { ...state, notes: editednotes };

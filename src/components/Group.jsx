@@ -12,7 +12,7 @@ const Group = (props) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteNotesAction(note.id.date));
+    dispatch(deleteNotesAction(note.id));
   };
 
   const [title, setTitle] = useState(note.title);
@@ -24,6 +24,7 @@ const Group = (props) => {
       id: note.id,
       title: title,
       words: words,
+      date: new Date(),
     };
 
     dispatch(editNotesAction(note.id, noteData));
@@ -40,13 +41,13 @@ const Group = (props) => {
       <Card style={{ width: "15rem" }} className="mx-auto mb-2">
         <Card.Body key={index}>
           <Card.Subtitle className="mb-2 text-muted">
-            <span className="fw-bold">Note #: </span><span className="text-info"> {index + 1}</span>
+            <span className="fw-bold">Note #: </span> <span className="text-info"> {index + 1}</span>
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">
-            <span className="fw-bold text-center">Date added</span> <br/><span className="text-warning h6"> {moment(note.date).format('MMMM Do YYYY, h:mm:ss a')}</span>
+            <span className="fw-bold">Date added</span> <br/> <span className="text-warning small">{moment(note.date).format('dddd, MMMM Do YYYY, h:mm:ss a.')}</span>
           </Card.Subtitle>
           <Card.Title className="mb-1 p-1 text-dark">
-            <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic p-2 h6 fw-bold"><u>{note.title}</u></span>
+            <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic h6 fw-bold mark"><u>{note.title}</u></span>
           </Card.Title>
           <Card.Text className="mb-4">{note.words}</Card.Text>
           <div className="d-flex justify-content-between bg-secondary p-2">

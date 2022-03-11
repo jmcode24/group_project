@@ -45,7 +45,7 @@ function GroupForm() {
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><MdOutlineTitle /></InputGroup.Text>
-            <FormControl type="text" value={title} onChange={handleTitleChange} />
+            <FormControl type="text" value={title} placeholder="a title" onChange={handleTitleChange} />
           </InputGroup>
           <Form.Label >Notes</Form.Label>
           <InputGroup className="mb-3">
