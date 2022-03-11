@@ -27,6 +27,7 @@ function GroupForm() {
       id: uuid(),
       title: title,
       words: words,
+      date: new Date(),
     };
 
     dispatch(addNotesAction(newNote));

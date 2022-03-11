@@ -45,8 +45,11 @@ const Group = (props) => {
     <>
       <Card style={{ width: "15rem" }} className="mx-auto mb-2">
         <Card.Body key={index}>
-          <Card.Subtitle className="mb-2 text-muted text-end">
-            <span className="fw-bold border-bottom">Note #: </span> <span className="text-info border-bottom">{index + 1}</span>
+          <Card.Subtitle className="mb-2 text-muted">
+            <span className="fw-bold">Note #: </span><span className="text-info"> {index + 1}</span>
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            <span className="fw-bold text-center">Date added</span> <br/><span className="text-warning"> {note.date.toLocaleString()}</span>
           </Card.Subtitle>
           <Card.Title className="mb-1 p-1 text-dark">
             <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic p-2 h6 fw-bold"><u>{note.title}</u></span>
