@@ -12,7 +12,7 @@ class GroupList extends React.Component {
         <Row className="mt-3 mb-2">
           <h3 className="text-center text-secondary">{notes.length ? 'Notes Added' : ''}</h3>
           {this.props.notes.map((note, index) => {
-            return <Group key={note.id} note={note} index={index} />;
+            return <Group key={note.id} date={note.date}  note={note} index={index} />;
           })}
         </Row>
       </Container>

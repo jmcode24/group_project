@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import {
-  Card,
-  Button,
-  Modal,
-  Form,
-  FormControl,
-  InputGroup,
-} from "react-bootstrap";
+import { Card, Button, Modal, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { deleteNotesAction, editNotesAction } from "../actions/actions";
 import { MdOutlineTitle } from "react-icons/md";
 import { GrDocumentNotes } from "react-icons/gr";
+import moment from "moment";
 
 const Group = (props) => {
   const note = props.note;
@@ -18,7 +12,7 @@ const Group = (props) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteNotesAction(note.id));
+    dispatch(deleteNotesAction(note.id.date));
   };
 
   const [title, setTitle] = useState(note.title);
@@ -28,7 +22,6 @@ const Group = (props) => {
   const handleSubmit = () => {
     let noteData = {
       id: note.id,
-      date: new Date(),
       title: title,
       words: words,
     };
@@ -50,7 +43,7 @@ const Group = (props) => {
             <span className="fw-bold">Note #: </span><span className="text-info"> {index + 1}</span>
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">
-            <span className="fw-bold text-center">Date added</span> <br/><span className="text-warning"> {note.date.toLocaleString()}</span>
+            <span className="fw-bold text-center">Date added</span> <br/><span className="text-warning h6"> {moment(note.date).format('MMMM Do YYYY, h:mm:ss a')}</span>
           </Card.Subtitle>
           <Card.Title className="mb-1 p-1 text-dark">
             <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic p-2 h6 fw-bold"><u>{note.title}</u></span>
