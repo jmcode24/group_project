@@ -45,12 +45,12 @@ function GroupForm() {
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><MdOutlineTitle /></InputGroup.Text>
-            <FormControl type="text" value={title} placeholder="a title" onChange={handleTitleChange} />
+            <FormControl type="text" required value={title} placeholder="a title" onChange={handleTitleChange} />
           </InputGroup>
           <Form.Label >Notes</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
-            <FormControl type="text" as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
+            <FormControl type="text" required as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
           </InputGroup>
           <Button type="submit" className="w-100">Add Notes</Button>
         </Form>
