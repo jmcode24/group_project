@@ -9,6 +9,7 @@ import { addNotesAction } from '../actions/actions';
 function GroupForm() {
   const [title, setTitle] = useState("");
   const [words, setWords] = useState("");
+  // const [emptyfields, setEmptyFields] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -23,9 +24,9 @@ function GroupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title && !words) {
-      return (<Alert variant='warning'>Please fill in the blanks</Alert>)
-    }
+    // if (!title.trim() || !words.trim()) {
+    //   setEmptyFields(true)
+    // }
     let newNote = {
       id: uuid(),
       title: title,
@@ -42,6 +43,7 @@ function GroupForm() {
 
   return (
     <>
+    {/* {emptyfields ? <Alert variant='warning'>Please fill in the blanks</Alert>:setEmptyFields(false)} */}
       <Container>
         <h1 className="text-center">Notepad</h1>
         <Form onSubmit={handleSubmit}>
