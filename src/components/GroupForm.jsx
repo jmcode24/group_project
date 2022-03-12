@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Form, InputGroup, FormControl, Button, Container, Alert } from 'react-bootstrap';
+import {Form, InputGroup, FormControl, Button, Container} from 'react-bootstrap';
 import { MdOutlineTitle } from 'react-icons/md';
 import { GrDocumentNotes } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
@@ -26,6 +26,7 @@ function GroupForm() {
 
     // if (!title.trim() || !words.trim()) {
     //   setEmptyFields(true)
+    //   return emptyfields ? <Alert variant='warning'>Please fill in the blanks</Alert>:setEmptyFields(false)
     // }
     let newNote = {
       id: uuid(),
@@ -43,7 +44,6 @@ function GroupForm() {
 
   return (
     <>
-    {/* {emptyfields ? <Alert variant='warning'>Please fill in the blanks</Alert>:setEmptyFields(false)} */}
       <Container>
         <h1 className="text-center">Notepad</h1>
         <Form onSubmit={handleSubmit}>
