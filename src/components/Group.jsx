@@ -41,15 +41,13 @@ const Group = (props) => {
       <Card style={{ width: "15rem" }} className="mx-auto mb-2">
         <Card.Body key={index}>
           <Card.Subtitle className="mb-2 text-muted">
-            <span className="fw-bold">Note #: </span> <span className="text-info"> {index + 1}</span>
-          </Card.Subtitle>
-          <Card.Subtitle className="mb-2 text-muted">
-            <span className="fw-bold">Date added</span> <br/> <span className="text-warning small">{moment(note.date).format('dddd, MMMM Do YYYY, h:mm:ss a.')}</span>
+            <span className="fw-bold">Date Created</span> <br/> <span className="text-warning small">{moment(note.date).format('dddd, MMMM Do YYYY, h:mm:ss a.')}</span>
           </Card.Subtitle>
           <Card.Title className="mb-1 p-1 text-dark">
-            <span className="fw-bold">Note Title </span> <br/> <span className="text-success fst-italic h6 fw-bold mark"><u>{note.title}</u></span>
+            <span className="fw-bold fs-6">Title </span> <br/> <span className="text-success fst-italic h6 fw-bold mark"><u>{note.title}</u></span>
           </Card.Title>
-          <Card.Text className="mb-4">{note.words}</Card.Text>
+          <Card.Text className="mb-4">
+          <span className="fw-bold fs-6">Note </span> <br/>{note.words}</Card.Text>
           <div className="d-flex justify-content-between bg-secondary p-2">
             <Button variant="danger" onClick={handleDelete}>
               Delete
@@ -75,7 +73,7 @@ const Group = (props) => {
               onChange={(e) => setTitle(e.target.value)}
             />
           </InputGroup>
-          <Form.Label>Notes</Form.Label>
+          <Form.Label>Note</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3">
               <GrDocumentNotes />
