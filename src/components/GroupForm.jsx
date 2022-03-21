@@ -57,7 +57,7 @@ function GroupForm() {
             <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
             <FormControl type="text" required as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
           </InputGroup>
-          <Button type="submit" className="w-100">Add Notes</Button>
+          <Button type="submit" className="w-100">Add Note</Button>
         </Form>
       </Container>
     </>
