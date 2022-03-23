@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Form, InputGroup, FormControl, Button, Container} from 'react-bootstrap';
+import {Form, InputGroup, FormControl, Button, Container, Alert} from 'react-bootstrap';
 import { MdOutlineTitle } from 'react-icons/md';
 import { GrDocumentNotes } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
@@ -9,8 +9,9 @@ import { addNotesAction } from '../actions/actions';
 function GroupForm() {
   const [title, setTitle] = useState("");
   const [words, setWords] = useState("");
-  // const [emptyfields, setEmptyFields] = useState(false)
-
+  const [emptyInputs, setEmptyInputs] = useState(false);
+  const [noEmptyInputs, setNoEmptyInputs] = useState(false);
+  
   const dispatch = useDispatch()
 
   const handleTitleChange = (e) => {
@@ -24,18 +25,27 @@ function GroupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!title.trim() || !words.trim()) {
-    //   setEmptyFields(true)
-    //   return emptyfields ? <Alert variant='warning'>Please fill in the blanks</Alert>:setEmptyFields(false)
-    // }
-    let newNote = {
-      id: uuid(),
-      title: title,
-      words: words,
-      date: new Date(),
-    };
 
-    dispatch(addNotesAction(newNote));
+    if (!title || !words) {
+      setEmptyInputs(true);
+      setTimeout(() => {
+        setEmptyInputs(false);
+      }, 3000);
+    } else {
+      let newNote = {
+        id: uuid(),
+        title: title,
+        words: words,
+        date: new Date(),
+      };
+
+      setNoEmptyInputs(true);
+      setTimeout(() => {
+        setNoEmptyInputs(false);
+      }, 3000);
+  
+      dispatch(addNotesAction(newNote));
+    }
 
     setTitle('');
     setWords('');
@@ -46,16 +56,18 @@ function GroupForm() {
     <>
       <Container>
         <h1 className="text-center">Notepad</h1>
+        {!emptyInputs ? '' : <Alert variant='danger'>Fill in all input fields</Alert> }
+        {!noEmptyInputs ? '' : <Alert variant='success'>Note successfully added</Alert> }
         <Form onSubmit={handleSubmit}>
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><MdOutlineTitle /></InputGroup.Text>
-            <FormControl type="text" required value={title} placeholder="a title" onChange={handleTitleChange} />
+            <FormControl type="text"  value={title} placeholder="a title" onChange={handleTitleChange} />
           </InputGroup>
           <Form.Label >Note</Form.Label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3"><GrDocumentNotes /></InputGroup.Text>
-            <FormControl type="text" required as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
+            <FormControl type="text"  as="textarea" row={4} placeholder="write notes here" value={words} onChange={handleNoteChange} />
           </InputGroup>
           <Button type="submit" className="w-100">Add Note</Button>
         </Form>
