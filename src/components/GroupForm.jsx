@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Form, InputGroup, FormControl, Button, Container, Alert} from 'react-bootstrap';
 import { MdOutlineTitle } from 'react-icons/md';
 import { GrDocumentNotes } from 'react-icons/gr';
+import { RiEmotionUnhappyLine, RiEmotionHappyLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import {v4 as uuid} from 'uuid';
 import { addNotesAction } from '../actions/actions';
@@ -56,8 +57,8 @@ function GroupForm() {
     <>
       <Container>
         <h1 className="text-center">Notepad</h1>
-        {!emptyInputs ? '' : <Alert variant='danger'>Fill in all input fields</Alert> }
-        {!noEmptyInputs ? '' : <Alert variant='success'>Note successfully added</Alert> }
+        {!emptyInputs ? '' : <Alert variant='danger'><RiEmotionUnhappyLine/> Please fill out all fields</Alert> }
+        {!noEmptyInputs ? '' : <Alert variant='success'><RiEmotionHappyLine/> Note successfully added</Alert> }
         <Form onSubmit={handleSubmit}>
           <Form.Label>Title</Form.Label>
           <InputGroup className="mb-3">
