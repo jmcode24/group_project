@@ -13,7 +13,7 @@ function GroupForm() {
   const [emptyInputs, setEmptyInputs] = useState(false);
   const [noEmptyInputs, setNoEmptyInputs] = useState(false);
   
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
